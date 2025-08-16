@@ -1,0 +1,207 @@
+/* Navbar styles */
+.navbardiv{
+   display: block;
+    box-shadow: 0 1px 8px black;
+    padding-top:0px;
+    padding-bottom: 10px;
+    position:sticky;
+    top: 0px;
+    margin: 0px;
+    z-index: 1;
+    
+}
+.navbardiv h6{
+position: relative;
+left: 15px;
+font-size: 16px;
+display: inline;
+color: grey;
+}
+
+.search-icon{
+    position: relative;
+    left: 90px;
+    top: 5px;
+    display: inline;
+    z-index: 1;
+}
+
+.navbardiv img{
+    width: 130px;
+
+}
+
+.navbardiv p{
+    display: inline;
+    margin-right:30px;
+    font-weight:700;
+    color: black;
+}
+
+
+.navbardiv p:hover{
+    color:rgb(153, 151, 151);
+    cursor: pointer;
+}
+
+.navbarsearch{
+    position: relative;
+    left: 50px;
+    width: 450px;
+    padding: 12px;
+    padding-left: 60px;
+    border:none;
+    border-radius: 5px;
+    outline: none;
+    background-color: rgb(231, 228, 228);
+}
+.navbarsearch:hover{
+background-color: rgb(208, 206, 206);
+border: none;
+outline: none;
+}
+.navbarsearch::placeholder{
+    font-size: 14px;
+   padding-left: 10px;
+   
+}
+
+.navemoji{
+    text-align: center;
+    position: relative;
+    left: 50px;
+    top: 12px;
+   margin-left: 120px;
+   font-size: 50px;
+   padding: 0px;
+}
+
+.navemoji h4{
+    display: inline;
+    margin-right: 10px;
+    
+}
+
+
+
+.navbardiv div {
+    text-align: center;
+    display: inline-block;
+    width: 20px;
+    height: 5px;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 40px;
+}
+
+
+/* Error Div styles */
+
+.errordiv{
+   text-align: center;
+    margin-top: 20vh;
+}
+.errordiv h1{
+    font-size: 170px;
+    padding: 20px;
+}
+.errordiv h3,h5{
+    padding-bottom: 10px;
+}
+
+/* productpage */
+.productpage{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.product-div{
+    width:250px;
+    display: inline-block;
+    border: 1px black solid;
+    border-radius: 5px;
+    margin: 20px;
+    background-color: rgba(3, 179, 255, 0.06);
+    
+    
+}
+.productpage img{
+    width: 100%;
+    border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+     border-bottom: 0.5px black solid;
+   
+}
+.addcartbutton{
+    margin-left: 40px;
+    background-color: rgba(10, 146, 224, 0.897);
+    border: none;
+    border-radius: 5px;
+    width: 50%;
+    padding: 2px;
+}
+
+.addwishlistbutton{
+      
+    background-color: transparent;
+    margin-left: 10px;
+    border: none;
+    font-weight:900;
+}
+.addcartcount{
+   
+    position: absolute;
+
+    bottom: 33px;
+    left: 200px;
+    font-size: 16px;
+    background-color: red;
+    color:white;
+    border-radius: 100%;
+    padding-left:6px;
+    padding-right: 6px;
+}
+
+.wishlistcount{
+    position:absolute;
+    bottom:33px;
+    left: 110px;
+    background-color: red;
+    font-size: 16px;
+    color: white;
+    display: inline;
+    border-radius: 100%;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.removecart{
+    background-color: rgb(244, 155, 155);
+    width: 70%;
+    padding: 2px;
+   margin-left: 15%;
+   margin-bottom: 10px;
+   border: none;
+   border-radius: 5px ;
+
+}
+.rating{
+    display: inline;
+   position:relative;
+   bottom: 435px;
+   left: 5px;
+   background-color: rgba(90, 191, 246, 0.827);
+   border-radius: 5px;
+   padding-left: 8px;
+   padding-right: 8px;
+}
+
+/* quantity buttons (+ and -) */
+.quanbutton{
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+}
