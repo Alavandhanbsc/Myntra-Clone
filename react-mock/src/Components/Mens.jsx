@@ -9,7 +9,9 @@ import axios from 'axios'
 import {useDispatch} from "react-redux"
 import { AddtoCart } from "../Redux/Cartslice";
 import { AddtoWishlist } from "../Redux/WishlistSlice";
+import {Sortbyprice,Setmensitem } from "../Redux/SortSlice"
 
+import {useSelector} from "react-redux"
 
 
 
@@ -18,7 +20,10 @@ function Menspage() {
     // declare a variable name for useDispath()
 const dispatch = useDispatch()
 
-    const [product, setProduct] = useState([])
+
+    const product = useSelector((state)=>state.Sort.sorteditems)
+
+    // for heart color change
     const [wishlist, setWishlist] = useState({})
 
     //useState for add to cart button
@@ -29,7 +34,7 @@ const dispatch = useDispatch()
     useEffect(() => {
         const mensfetch = async () => {
             const fetch = await axios.get(url)
-            setProduct(fetch.data)
+            dispatch(Setmensitem(fetch.data))   // store data in redux 
 
         }
         mensfetch()
@@ -56,9 +61,18 @@ const dispatch = useDispatch()
         <>
             <Navbar />
 
+             <select name="sort" id="" className='menspagesort' onChange={(e)=>{dispatch(Sortbyprice(e.target.value))}} >
+                    <option value="" selected disabled>To Sort By</option>
+                    <option value="low-to-high">Low-to-High</option>
+                    <option value="high-to-low">High-to-Low</option>
+                    <option value="withoutsort">Without-Sort</option>
+                </select>
+
+
 
             <div className="productpage">
 
+               
 
                 {product.map((res, index) => {
                     return (
@@ -71,13 +85,13 @@ const dispatch = useDispatch()
                             <img src={res.imgURIs[1]} />
 
 
-                            <table className="mt-3" style={{ width: "60%", marginLeft: "45px", }}>
+                            <table className="mt-3" style={{ width: "80%", marginLeft: "45px", }}>
                                 <tr>
                                      <th>{res.brand}</th>
                                 </tr>
                                 
                                     <tr>
-                                        <td>For {res.category}</td> 
+                                        <td className="sample">For {res.category}</td> 
                                     </tr> 
             
                                 <tr>
@@ -96,7 +110,9 @@ const dispatch = useDispatch()
                                                     id:res.id,
                                                     price:res.price,
                                                     category:res.category,
-                                                    rating:res.rating
+                                                    rating:res.rating,
+                                                    mrp:res.MRP,
+                                                    discount:res.discount
                                                 })) , 
                                                 
                                                 setDisabled(prev=>({...prev,[index]:true}))
@@ -124,7 +140,7 @@ const dispatch = useDispatch()
 
                               <div >
                                 
-                            <p className="rating">{res.rating}<FaStarHalfAlt style={{color:"yellow"}}/> </p></div>
+                            <p className="menspagerating">{res.rating}<FaStarHalfAlt style={{color:"yellow"}}/> </p></div>
                               <h5> {wishlistadd[index] ? (<FaHeart style={{color:"red"}}/>) :(<FaRegHeart />) } </h5>
                             </button>
 

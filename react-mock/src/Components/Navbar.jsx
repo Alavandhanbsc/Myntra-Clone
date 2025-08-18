@@ -32,6 +32,9 @@ function Navbar (){
                 <h3 className="search-icon">⌕</h3>
                 <input className="navbarsearch" type="search"  placeholder= "Seach for Products,brands and More"/> 
 
+        
+                
+
                  <h6 className="navemoji"> 
                     <div>
                         <Link to={"/profile"}  style={{ textDecoration:'none'}}  ><h4  style={{fontSize:"25px",paddingLeft:"10px"}}><IoMdContact style={{color:"black"}}/></h4><br/></Link>
