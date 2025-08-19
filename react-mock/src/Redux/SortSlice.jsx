@@ -2,7 +2,9 @@ import {createSlice} from "@reduxjs/toolkit"
 
 const initialState = {
     items:[],
-    sorteditems:[]
+    sorteditems:[],
+    //for search
+    searchAlphabet:[],
 
 }
 
@@ -25,11 +27,23 @@ const SortSlice = createSlice({
             }else{
                 state.sorteditems=state.items
             }
+        },
+        Filterbybrand:(state,action)=>{
+            const letters = action.payload.toLowerCase()
+            state.searchAlphabet = letters
+
+            if(letters===""){
+                state.sorteditems=state.items
+            }else{
+                state.sorteditems=state.items.filter((res)=>
+                    res.brand.toLowerCase().startsWith(letters) // we can use "includes" ==> for search each each letters amnd give product which letters are matched
+                )
+            }
         }
 
 
     }
 })
 
-export const {Setmensitem,Sortbyprice} =SortSlice.actions
+export const {Setmensitem,Sortbyprice,Filterbybrand} =SortSlice.actions
 export default SortSlice.reducer

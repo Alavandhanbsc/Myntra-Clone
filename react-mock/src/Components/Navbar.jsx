@@ -8,7 +8,14 @@ import { IoMdContact } from "react-icons/io";
 import { FaShoppingCart } from "react-icons/fa";
 import {useSelector} from 'react-redux'
 
+//import useDispatch()
+import {useDispatch} from "react-redux"
+
+import { Filterbybrand } from '../Redux/SortSlice';
+
 function Navbar (){
+
+    const dispatch = useDispatch()
 
     const Cartcount = useSelector(state=>state.cart.cart)
     const wishlistcount =useSelector(state=>state.wishlist.wishlist)
@@ -30,7 +37,7 @@ function Navbar (){
                  </h6> 
 
                 <h3 className="search-icon">⌕</h3>
-                <input className="navbarsearch" type="search"  placeholder= "Seach for Products,brands and More"/> 
+                <input className="navbarsearch" type="search" onChange={(e)=>{dispatch(Filterbybrand(e.target.value))}} placeholder= "Seach for Products,brands and More"/> 
 
         
                 

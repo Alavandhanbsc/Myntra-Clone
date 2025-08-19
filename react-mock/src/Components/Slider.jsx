@@ -27,7 +27,7 @@ function Slider() {
   return (
     <>
 
-    <Carousel interval={3000}  prevIcon={<h3 style={{color:"grey"}}>{prevsymbol}</h3>}  nextIcon={<h3 style={{color:"black"}}>{nextsymbol}</h3>}>  
+    <Carousel className="mt-4" interval={2000}  prevIcon={<h3 style={{color:"grey"}}>{prevsymbol}</h3>}  nextIcon={<h3 style={{color:"black"}}>{nextsymbol}</h3>}>  
 
       {sliderdata.map((res, index) => (
         <Carousel.Item key={index}>

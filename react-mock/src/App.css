@@ -130,12 +130,14 @@ outline: none;
 .product-div{
     width:250px;
     display: inline-block;
-    border: 1px black solid;
     border-radius: 5px;
     margin: 20px;
     background-color: rgba(3, 179, 255, 0.06);
-    
-    
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);   
+}
+
+.product-div:hover{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
 }
 .productpage img{
     width: 100%;
@@ -146,7 +148,7 @@ outline: none;
 }
 .addcartbutton{
     margin-left: 40px;
-    background-color: rgba(10, 146, 224, 0.897);
+    background-color: rgba(3, 159, 249, 0.897);
     border: none;
     border-radius: 5px;
     width: 50%;
@@ -218,17 +220,22 @@ outline: none;
 .cartproductdiv{
     margin: 40px;
     width: 554px;
-    height: 334px;
-    border: 2px solid black;
+    height: 330px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
+}
+.cartproductdiv:hover{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
 }
 .cartpageimgdiv{
     width: 250px;
     display: inline-block;
+    border-radius: 5px;
 }
 .cartpageimg{
     width: 99%;
- 
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; 
 }
 .cartpagetablediv{
     position: relative;
@@ -246,8 +253,9 @@ padding-top: 20px;
    
 }
 .cartremovebutton{
-    background-color: rgb(196, 101, 101);
+    background-color: rgb(244, 172, 172);
     border: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
     border-radius: 5px;    
 }
 .inspectimgdiv{
@@ -282,3 +290,58 @@ padding-top: 20px;
     border-radius: 5px;
    
 }
+
+/* wishlist */
+.wishlistproduct-div{
+    width:250px;
+    display: inline-block;
+    border-radius: 5px;
+    margin: 25px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.wishlistproduct-div:hover{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
+}
+
+.wishlistproduct-div button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-left: 20%;
+    background-color: rgb(232, 172, 172);
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.wishlistimg{
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.wishlisttable{
+    width: 90%;
+    margin: auto;
+   
+}
+.wishlisttable td{
+    padding: 0px;
+}
+.wishlistrating{
+    background-color: rgb(234, 145, 145);
+    display: inline;
+    padding-left: 3px;
+    padding-right:3px ;
+    border-radius: 5px;
+    position: relative;
+    bottom: 325px;
+    
+    margin-left: 10px
+}
+.wishpagetdbold{
+    font-weight: 350;
+}
+

@@ -33,24 +33,28 @@ const dispatch = useDispatch()
                 Addwishlist.map((item,index)=>{
 
         return(
-            <div  className="product-div mt-5" key={index}>
+            <div  className="wishlistproduct-div mt-5" key={index}>
 
                
-                <img style={{width:"100%",borderRadius:"5px"}} src={item.image} />
-                 <table className="mt-3 mb-3" style={{ width: "60%", marginLeft: "45px", }}>
+                <img className='wishlistimg' src={item.image} />
+                <div className="wishlistrating">{item.rating}<FaStarHalfAlt style={{color:"yellow"}}/></div>
+
+                            <table className='wishlisttable'>
                                 <tr>
-                                    <th>Brand :</th> <td>{item.brand}</td>
+                                    <td >Brand</td > <td className='wishpagetdbold' >{item.brand}</td>
                                 </tr>
+
                                 <tr>
-                                    <th>Catogory :</th> <td>{item.category}</td>
+                                    <td >Catogory</td> <td className='wishpagetdbold'>For {item.category}</td>
                                 </tr>
+
                                 <tr>
-                                    <th>Price :</th> <td>₹{item.price}</td>
+                                    <td >Price</td> <td className='wishpagetdbold'>{item.price}</td>
                                 </tr>
                             </table>
-                             <div className="rating">{item.rating}<FaStarHalfAlt style={{color:"yellow"}}/></div>
-                            <button className="removecart" onClick={()=>dispatch(RemoveWishlist({id:item.id}))}>Remove From Wishlist</button>
-            </div>
+
+                    <button className="removewishlist" onClick={()=>dispatch(RemoveWishlist({id:item.id}))}>Remove Wishlist</button>
+                </div>
         )
       })
 
