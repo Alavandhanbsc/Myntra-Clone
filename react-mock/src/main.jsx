@@ -12,9 +12,11 @@ import Profilepage from './Components/Profile.jsx'
 //import provider whick make a connection between react and redux
 import {Provider} from 'react-redux'
 import Store from './Redux/Store.jsx'
+import Login from './Components/Login.jsx'
 
 const router = createBrowserRouter([
-  { path: "/", element: <App /> },
+  { path: "/" ,element:<Login/>},
+  { path: "/home", element: <App /> },
   { path: "/mens", element: <Menspage /> },
   { path: "/profile", element: <Profilepage /> },
   { path: "/wishlist", element: <Wishlist/> },

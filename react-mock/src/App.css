@@ -1,3 +1,66 @@
+/* Login div */
+.logindiv{
+    background-color: #363e4f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.loginformandimgdiv{
+     background-color: rgb(255, 255, 255);
+     border-radius: 5px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
+     width: 790px;
+     height: 395.5px;  
+}
+
+.loginlogo{
+    width: 60px;
+    position: relative;
+    bottom: 30px;
+    left: 5px;
+
+}
+.loginformandimgdiv form{
+  padding: 30px;
+  width: 60%;
+  display: block;
+  
+}
+.myntratext{
+    position:relative;
+    bottom: 20px;
+    font-weight: 700;
+}
+.loginformandimgdiv form input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 30px;
+}
+
+.loginformandimgdiv form label{
+    font-weight: 700;
+}
+.loginformandimgdiv form button {
+    background-color: #ff3f6c;
+    color:white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    width: 70%;
+    padding: 3px;
+    margin-left: 30%;
+}
+.akkalogo{
+    width: 100%;
+    border-left: 0.5px rgb(245, 241, 241) solid;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    
+}
+
 /* Navbar styles */
 .navbardiv{
    display: block;
@@ -199,6 +262,9 @@ outline: none;
    padding-right: 8px;
 }
 
+.menspagemyntralogo{
+    width: 50px;
+}
 .rating{
     display: inline;
    position:relative;

@@ -23,7 +23,7 @@ function Navbar (){
     return(
         <nav className= " bg-light navbardiv">
             <nav>  
-         <Link to={"/"}  style={{ textDecoration: 'none'}}> <img src={logo} alt="Myntra logo" /> </Link>
+         <Link to={"/"}  style={{ textDecoration: 'none'}}> <img style={{width:"80px",paddingLeft:"10px"}} src={logo} alt="Myntra logo" /> </Link>
 
                  <h6>  
                     <Link to={"/mens"}  style={{ textDecoration:'none'}}  ><p>Mens</p></Link> 
