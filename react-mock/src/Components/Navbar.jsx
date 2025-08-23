@@ -12,6 +12,7 @@ import {useSelector} from 'react-redux'
 import {useDispatch} from "react-redux"
 
 import { Filterbybrand } from '../Redux/SortSlice';
+import { ToastContainer } from 'react-toastify';
 
 function Navbar (){
 
@@ -68,6 +69,8 @@ function Navbar (){
                 </h6> 
 
             </nav>
+            
+           <ToastContainer position="top-right" autoClose={2000} />
            
         </nav>
     )

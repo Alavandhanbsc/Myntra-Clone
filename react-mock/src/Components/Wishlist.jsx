@@ -10,11 +10,9 @@ import { RemoveWishlist } from "../Redux/WishlistSlice";
 import { GiBrokenHeartZone } from "react-icons/gi";
 
 
-
 function Wishlist (){
     const Addwishlist = useSelector(state => state.wishlist.wishlist);
 const dispatch = useDispatch()
-
 
 
     return(
@@ -61,9 +59,7 @@ const dispatch = useDispatch()
 
         )}
 
-       
-
-       
+    
         </>
     )
 }

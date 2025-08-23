@@ -5,8 +5,6 @@ import { Carousel } from "react-bootstrap"
 const prevsymbol = "<<<"
 const nextsymbol = ">>>"
 
-
-
 const sliderurl = "http://localhost:3001/Slider"
 
 function Slider() {
@@ -36,9 +34,6 @@ function Slider() {
       ))}
 
     </Carousel>
-
-
-
 
     </>
   )
