@@ -2,26 +2,53 @@
 //import navbar
 import Navbar from "./Navbar";
 
+//import popup
+import Swal from "sweetalert2";
+
 //import redux functions
-import { RemoveCart, IncQuantity, DecQuantity } from "../Redux/Cartslice";
+import { RemoveCart,ClearCart, IncQuantity, DecQuantity } from "../Redux/Cartslice";
+import {storeorder} from "../Redux/Orderslice"
+import {AddorderHistory} from "../Redux/OrderHistorySlice"
 
 
 //import Usedispatch()
 import { useSelector, useDispatch } from "react-redux";
 
 //import needed images for our page 
-import { TbShoppingCartX } from "react-icons/tb";
 import { FaStarHalfAlt } from "react-icons/fa";
-import { useState } from "react";
-import { FaHandPointLeft } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { Link,useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 
 function Cartpage() {
+  const navigate = useNavigate()
   const cartItems = useSelector(state => state.cart.cart);
   const dispatch = useDispatch();
 
-  //
+// fetch empty cart image from url
+  const [emptycartimg,setEmptycartimg] = useState([])
+  const url ="http://localhost:3001/icons"
+
+  useEffect(()=>{
+      const getdata =async()=>{
+        const whole = await axios.get(url)
+       setEmptycartimg(whole.data.emptyCart)
+      }
+      getdata()
+      
+  },[])
+
+  console.log(emptycartimg)
+
+  // declare a state for hover the cart div form preview
   const [hoveredimage,setHoweredimage] = useState(null)
+
+  // create a variable for order card
+
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  const totalPrice = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
   return (
     <>
@@ -30,18 +57,19 @@ function Cartpage() {
       {cartItems.length === 0 ? (
         <div>
           <h1 style={{ textAlign: "center", marginTop: "10%" }}>
-            <TbShoppingCartX style={{ color: "lightGrey", fontSize: "200px" }} />
+            <img src={emptycartimg} alt="Cart Empty" />
           </h1>
-          <h4 style={{ color: "grey", textAlign: "center" }}>Page is Empty please Select some Items</h4>
+          <h4 style={{ color: "grey", textAlign: "center",fontFamily:"cursive" }}>Cart is Empty</h4>
+          <Link style={{textDecoration:"none"}} to={"/mens"}><h5 style={{color:"blue",fontFamily:"cursive",textAlign:"center"}}>Click to Start Purchasing...!</h5></Link>
         </div>
       ) :
       
       (
         cartItems.map((item, index) => (
           
-          <div className="cartproductdiv" key={index}>
+          <div className="cartproductdiv" key={index}  onMouseEnter={()=>{setHoweredimage(item.image)}} onMouseLeave={()=>{setHoweredimage(null)}}>
 
-            <div className="cartpageimgdiv" onMouseEnter={()=>{setHoweredimage(item.image)}} onMouseLeave={()=>{setHoweredimage(null)}}>
+            <div className="cartpageimgdiv">
                 <img className="cartpageimg" src={item.image} />
                 <div className="rating">
                   {item.rating}<FaStarHalfAlt style={{ color: "yellow" }} />
@@ -87,7 +115,16 @@ function Cartpage() {
                  <tr> <td> </td> 
 
                       <td > 
-                        <button className="cartremovebutton" onClick={() => dispatch(RemoveCart({ id: item.id }))}>
+                        <button className="cartremovebutton" onClick={() => {dispatch(RemoveCart({ id: item.id }));
+                          Swal.fire({
+                              toast: true,
+                              position: "bottom-end",
+                              icon: "info",
+                              title: "Item removed !",
+                              showConfirmButton: false,
+                              timer: 2000,
+                              timerProgressBar: true,
+                          });}}>
                       Remove From Cart
                         </button> 
                       </td> 
@@ -97,27 +134,73 @@ function Cartpage() {
               </tbody>
 
            
-            </table>
-
-
-            
+            </table>            
 
             </div>
 
 
             {hoveredimage!==null ?(
+              <>
               <div className="inspectimgdiv show">
              <img className="inspectimg" src={hoveredimage} />
             </div>
+
+            
+            </>
             
             ):(
-               <div className="inspectimgdivempty">
-                <FaHandPointLeft style={{fontSize:"20px"}}/>  Tab the image To Preview 
-            </div>
+              
+              null
+            
             )}
 
           </div>
+
+          
+
+          
         ))
+      )}
+
+      {/* order Card */}
+
+      {cartItems.length!==0?(
+        <div className="ordercard">
+          <h3>Order Summary</h3>
+          <p>Total Items : {totalQuantity}</p>
+          <p>Total price : ₹ {totalPrice}</p>
+          
+          
+          <button onClick={()=>{
+          Swal.fire({
+            title: "Confirm to Order!",
+            text: 'Click "Confirm" to Place the order',
+            icon:"question",
+            confirmButtonText: "Place Order",
+            showCancelButton:true,
+            cancelButtonText:"Not Now",
+            cancelButtonColor:"skyblue",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                console.log("OK button clicked!");
+                dispatch(AddorderHistory(cartItems));
+                dispatch(storeorder(cartItems));
+                dispatch(ClearCart());
+                navigate("/orderpage")
+                Swal.fire({
+                  title: "success!",
+                  text: 'Order placed succesfully ',
+                  icon: "success",
+                  confirmButtonText: "Ok",
+                  
+                })
+                 }
+              });
+    
+    }} >Place Order</button>
+        </div>
+      ):(
+        <div></div>
       )}
     </>
   );

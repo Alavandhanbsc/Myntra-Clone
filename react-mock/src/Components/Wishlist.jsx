@@ -8,6 +8,9 @@ import { RemoveWishlist } from "../Redux/WishlistSlice";
 
 // import icons
 import { GiBrokenHeartZone } from "react-icons/gi";
+import Swal from "sweetalert2";
+import { Link } from 'react-router-dom';
+import emptywishlist from "../assets/No-produc.png"
 
 
 function Wishlist (){
@@ -21,10 +24,14 @@ const dispatch = useDispatch()
        <Navbar />
 
         {Addwishlist.length===0 ?(
-           <div style={{textAlign:"center",marginTop:"10%"}}>
-             <h1>{<GiBrokenHeartZone style={{fontSize:"200px",color:"lightgray"}} />}</h1>
-            <h4 style={{color:"grey"}}>No items in Wishlist . Please select some</h4>
-           </div>
+            <>
+           <div className="orderpageemptydiv">
+                       <img className="orderpagenoproductimg " style={{width:"500px"}} src={emptywishlist} alt="" />
+            </div>
+                       <Link style={{textDecoration:"none"}} to={"/mens"}><h5 style={{color:"blue",fontFamily:"sans-serif",textAlign:"center"}}>Click to Start Purchasing...!</h5></Link>
+          
+           
+           </>
         ) :(
 
 
@@ -51,7 +58,16 @@ const dispatch = useDispatch()
                                 </tr>
                             </table>
 
-                    <button className="removewishlist" onClick={()=>dispatch(RemoveWishlist({id:item.id}))}>Remove Wishlist</button>
+                    <button className="removewishlist" onClick={()=>{dispatch(RemoveWishlist({id:item.id}));
+                                                            Swal.fire({
+                                                                toast: true,
+                                                                position: "bottom-end",
+                                                                icon: "info",
+                                                                title: "Item removed !",
+                                                                showConfirmButton: false,
+                                                                timer: 2000,
+                                                                timerProgressBar: true,
+                                                            });}}>Remove Wishlist</button>
                 </div>
         )
       })

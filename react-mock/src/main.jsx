@@ -13,14 +13,30 @@ import Profilepage from './Components/Profile.jsx'
 import {Provider} from 'react-redux'
 import Store from './Redux/Store.jsx'
 import Login from './Components/Login.jsx'
+import Orderpage from './Components/OrderPage.Jsx'
+import Orderhistory from './Components/OrderHistory.jsx'
+import Womenspage from './Components/Womens.jsx'
+import Fashionpage from './Components/Fashionpage.jsx'
+import Genzpage from './Components/Genz.jsx'
+import Kidspage from './Components/Kids.jsx'
+import Homepage from './Components/Home.jsx'
+import Studiopage from './Components/Studio.jsx'
 
 const router = createBrowserRouter([
   { path: "/" ,element:<Login/>},
   { path: "/home", element: <App /> },
   { path: "/mens", element: <Menspage /> },
+  { path: "/womens", element:<Womenspage />},
+  { path: "/beauty" , element:<Fashionpage />},
+  { path: "/genz", element:<Genzpage />},
+  { path: "/kids",element:<Kidspage />},
+  { path: "/homeappliance",element:<Homepage />},
+  { path:"/studio",element:<Studiopage />},
   { path: "/profile", element: <Profilepage /> },
   { path: "/wishlist", element: <Wishlist/> },
   { path: "/cartpage", element: <Cartpage /> },
+  { path: "/orderpage", element:<Orderpage />},
+  { path: "/orderhistory",element:<Orderhistory />},
   { path: "/*", element: <Errorpage /> }
 ])
 

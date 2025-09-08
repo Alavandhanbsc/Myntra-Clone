@@ -5,6 +5,7 @@ import { useNavigate} from "react-router-dom"
 //import images
 import logo from "../assets/Myntralogo.png"
 import girllogo from "../assets/loginImage.jpg"
+import Swal from "sweetalert2";
 import { toast } from "react-toastify"
 import { Toast } from "bootstrap"
 
@@ -36,14 +37,81 @@ function Login (){
     e.preventDefault()
     console.log("From Customer :",userreq.useremail,userreq.userpassword)
     console.log("From API :",loginsecurity.username,loginsecurity.password)
-    if(userreq.useremail===loginsecurity.username){
+    if(userreq.useremail===loginsecurity.username&userreq.userpassword===loginsecurity.password){
          Navigate("/home")
         console.log("Correct Authentication")
-        alert("Login Succesfully")
-    }else{
-        console.log("wrong Authentication")
-        alert("user Details Must")
+        Swal.fire({
+                    title: "Success!",
+                    text: "Login Succesfully",
+                    icon: "success",
+                    confirmButtonText: "OK",
+            });
     }
+    else if(userreq.useremail===""&userreq.userpassword===""){
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: "Please enter E-mail and Password",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+          });
+    }else if(userreq.useremail===""&userreq.userpassword===loginsecurity.password){
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: "E-mail is must!",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+          });
+    }else if(userreq.useremail===loginsecurity.username&userreq.userpassword===""){
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: "Password is Must",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+          });
+    }
+    else if(userreq.useremail!==loginsecurity.username&userreq.userpassword===loginsecurity.password){
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: "Invalid E-mail",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+          });
+    }else if(userreq.useremail===loginsecurity.username&userreq.userpassword!==loginsecurity.password){
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: "Password doesn't match !",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+          });
+    }
+        else{
+        console.log("wrong Authentication")
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: "Invalid User!",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+          });
+    }
+    
    }
 
 

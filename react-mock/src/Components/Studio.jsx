@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 
 //empty dearch
 import emptysearch from "../assets/product-not-found.jpg"
+import studiobanner from "../assets/studiobanner.jpg"
 
 import "react-toastify/dist/ReactToastify.css";
 //redux functions
@@ -20,10 +21,9 @@ import { AddtoCart } from "../Redux/Cartslice";
 import { AddtoWishlist,RemoveWishlist } from "../Redux/WishlistSlice";
 import {Sortbyprice,Setmensitem} from "../Redux/SortSlice"
 import {useSelector} from "react-redux"
-import mensbanner from "../assets/mensbanner.jpg"
 
 
-function Menspage() {
+function Studiopage() {
 
     // declare a variable name for useDispath()
     const dispatch = useDispatch()
@@ -64,6 +64,7 @@ function Menspage() {
 
         <>
             <Navbar />
+            
 
             {/* for search function */}
              <select name="sort" id="" className='menspagesort' onChange={(e)=>{dispatch(Sortbyprice(e.target.value))}} >
@@ -74,17 +75,15 @@ function Menspage() {
                 </select>
 
             <div className="productpage">
+                <div className="categorybanner">
+                     <img style={{height:"100%"}} src={studiobanner} alt="" />
+                </div>
                 
-
+      
                 {
                     product.length===0 ?(
                         <img style={{width:"400px"}} className="mt-5 b-none" src={emptysearch} alt="Item not Found" />
                     ):(
-                        <>
-                        <div className="categorybanner">
-                         <img style={{height:"100%"}} src={mensbanner} alt="" />
-                        </div>
-                        {
                         product.map((res, index) => {
                     return (
 
@@ -203,7 +202,6 @@ function Menspage() {
                         </>
                     )
                 })
-             } </>
                     )
                 }
             </div>
@@ -211,4 +209,4 @@ function Menspage() {
     )
 }
 
-export default Menspage 
+export default Studiopage 

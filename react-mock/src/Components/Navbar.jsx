@@ -1,21 +1,24 @@
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../assets/Myntralogo.png'
 
 // logos for navbar
 import { FaRegHeart } from "react-icons/fa";
 import { IoMdContact } from "react-icons/io";
 import { FaShoppingCart } from "react-icons/fa";
+import { FaPowerOff } from "react-icons/fa6";
 import {useSelector} from 'react-redux'
+
 
 //import useDispatch()
 import {useDispatch} from "react-redux"
 
 import { Filterbybrand } from '../Redux/SortSlice';
 import { ToastContainer } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 function Navbar (){
-
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const Cartcount = useSelector(state=>state.cart.cart)
@@ -23,16 +26,16 @@ function Navbar (){
     return(
         <nav className= " bg-light navbardiv">
             <nav>  
-         <Link to={"/"}  style={{ textDecoration: 'none'}}> <img style={{width:"80px",paddingLeft:"10px"}} src={logo} alt="Myntra logo" /> </Link>
+         <Link to={"/home"}  style={{ textDecoration: 'none'}}> <img style={{width:"80px",paddingLeft:"10px"}} src={logo} alt="Myntra logo" /> </Link>
 
                  <h6>  
                     <Link to={"/mens"}  style={{ textDecoration:'none'}}  ><p>Mens</p></Link> 
-                    <Link to={"/mens"}  style={{ textDecoration:'none'}}  ><p>Womens</p></Link> 
-                    <Link to={"/mens"}  style={{ textDecoration:'none'}}  ><p>Kids</p></Link> 
-                    <Link to={"/mens"}  style={{ textDecoration:'none'}}  ><p>Home</p></Link>  
-                    <Link to={"/mens"}  style={{ textDecoration:'none'}}  ><p>Beauty</p></Link> 
-                    <Link to={"/mens"}  style={{ textDecoration:'none'}}  ><p>Genz</p></Link> 
-                    <Link to={"/mens"}  style={{ textDecoration:'none'}}  ><p>Studio</p></Link> 
+                    <Link to={"/Womens"}  style={{ textDecoration:'none'}}  ><p>Womens</p></Link> 
+                    <Link to={"/kids"}  style={{ textDecoration:'none'}}  ><p>Kids</p></Link> 
+                    <Link to={"/homeappliance"}  style={{ textDecoration:'none'}}  ><p>Home</p></Link>  
+                    <Link to={"/beauty"}  style={{ textDecoration:'none'}}  ><p>Beauty</p></Link> 
+                    <Link to={"/genz"}  style={{ textDecoration:'none'}}  ><p>Genz</p></Link> 
+                    <Link to={"/studio"}  style={{ textDecoration:'none'}}  ><p>Studio</p></Link> 
                     
                  
                  </h6> 
@@ -54,19 +57,40 @@ function Navbar (){
                             {wishlistcount.length===0 ?(""):(<div><h4 className='wishlistcount'>{wishlistcount.length}</h4><br /></div>)}
                         </div>
                        
-                       <Link to={"/wishlist"}  style={{ textDecoration:'none'}}  ><h4 style={{paddingLeft: "20px" }}>{<FaRegHeart style={{color:'black'}}/> }</h4><br /></Link> 
+                       <Link to={"/wishlist"}  style={{ textDecoration:'none'}}  ><h4 style={{paddingLeft: "20px" ,position:"relative",right:"63px"}}>{<FaRegHeart style={{color:'black'}}/> }</h4><br /></Link> 
                        <p>Wishlist</p>
-                    </div>  
+
+                     </div>  
 
 
                     
-                    <div style={{paddingLeft:"65px"}}>
+                    <div style={{paddingLeft:"60px"}}>
 
                         <div>{Cartcount.length===0 ?("") :(<div> <h4 className='addcartcount'>{Cartcount.length}</h4> </div>)}</div>
-                      <Link to={"/cartpage"}  style={{ textDecoration:'none'}}  > <h4 ><FaShoppingCart style={{color:"black"}} /></h4><br /></Link>  
+                      <Link to={"/cartpage"}  style={{ textDecoration:'none',position:"relative",right:"63px"}}  > <h4 ><FaShoppingCart style={{color:"black"}} /></h4><br /></Link>  
                         <p>Bag</p>
+                    </div> 
+
+                    <div style={{paddingLeft:"20px"}}>
+                      <Link   style={{ textDecoration:'none',position:"relative",left:"15px"}}  > <h4 ><FaPowerOff style={{color:"red",fontSize:"20px"}} onClick={()=>{
+                        Swal.fire({
+                            title: "Confirm to Log Out!",
+                            text: 'Click "Confirm" to Log Out',
+                            icon:"question",
+                            showCancelButton:true,
+                            confirmButtonText: "Log Out",
+                            confirmButtonColor:"red",
+                            cancelButtonText:"Not now",
+                            cancelButtonColor:"skyblue"
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                navigate("/")
+                                }
+                            });
+                      }} /></h4><br /></Link>
+                      <p style={{marginLeft:"0px"}}>LogOut</p>  
                     </div>  
-                </h6> 
+                </h6>
 
             </nav>
             

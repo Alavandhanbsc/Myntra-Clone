@@ -1,4 +1,7 @@
-/* Login div */
+img {
+  border: none;
+  outline: none;
+}
 .logindiv{
     background-color: #363e4f;
     display: flex;
@@ -62,17 +65,21 @@
 }
 
 /* Navbar styles */
-.navbardiv{
-   display: block;
-    box-shadow: 0 1px 8px black;
-    padding-top:0px;
-    padding-bottom: 10px;
-    position:sticky;
-    top: 0px;
-    margin: 0px;
-    z-index: 1;
-    
+.navbardiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 8px black;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  margin: 0;
+  z-index: 1;
+  background-color: white;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow-x: auto; /* Scroll horizontally if too wide */
 }
+
 .navbardiv h6{
 position: relative;
 left: 15px;
@@ -118,15 +125,7 @@ color: grey;
     outline: none;
     background-color: rgb(231, 228, 228);
 }
-.menspagesort{
-    padding: 10px;
-    padding-bottom: 0px;
-    outline: none;
-    border: none;
-    /* border-bottom: 2px solid black; */
-    background-color: transparent;
-    font-weight: 700;
-}
+
 .navbarsearch:hover{
 background-color: rgb(208, 206, 206);
 border: none;
@@ -165,7 +164,22 @@ outline: none;
     margin: 0px;
     margin-right: 40px;
 }
-
+/* slider */
+.homepagecategory{
+    margin-top: 20px;
+}
+.homepagecategory h1{
+    color: #f60a41;
+    text-align: center;
+}
+.homepagecategory img{
+    width: 300px;
+    display: inline-block;
+    
+}
+.category-row{
+    display: inline;
+}
 
 /* Error Div styles */
 
@@ -180,6 +194,21 @@ outline: none;
 .errordiv h3,h5{
     padding-bottom: 10px;
 }
+
+/* product page's Sort tag */
+.menspagesort{
+    position: fixed;
+    left: 30px;
+    padding: 10px;
+    padding-bottom: 0px;
+    outline: none;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: 700;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+}
+
 
 /* productpage */
 .productpage{
@@ -198,7 +227,17 @@ outline: none;
     background-color: rgba(3, 179, 255, 0.06);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);   
 }
-
+.categorybanner{
+    width:100%;
+    height:470px;
+    margin:20px;
+    text-align:center;
+    border: none;
+   }
+.categorybanner img{
+    border-radius: 10px;
+    border: none;
+}
 .product-div:hover{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
 }
@@ -209,13 +248,30 @@ outline: none;
      border-bottom: 0.5px black solid;
    
 }
-.addcartbutton{
-    margin-left: 40px;
-    background-color: rgba(3, 159, 249, 0.897);
-    border: none;
-    border-radius: 5px;
-    width: 50%;
-    padding: 2px;
+
+/* add cart button in mens page */
+
+.addcartbutton {
+  background: #ff3f6c;
+  margin-left: 46px;
+  color: white;
+  border: none;
+  width: 50%;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.addcartbutton:hover {
+  background-color:#ff003c;  /* Hover effect */
+  padding: 5px;
+}
+
+.addcartbutton.added {
+  background-color: grey;  /* Green when clicked (Added) */
+  color: white;
+  padding: 5px;
 }
 
 .addwishlistbutton{
@@ -276,6 +332,34 @@ outline: none;
    padding-right: 8px;
 }
 
+/* Profilepage */
+.profilediv{
+    margin: auto;
+    margin-top: 50px;
+    width: 1000px;
+    height: 500px;
+    border-radius: 10px;
+    background-image: url("./assets/Profilebackground.png");
+    background-size: cover;     
+    background-position: center; 
+    background-repeat: no-repeat;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+}
+.profiletable{
+    padding-right: 200px;
+    background-color: white;
+    padding: 20px;
+    position: fixed;
+    left: 370px;
+    bottom: 130px;
+}
+.profiletable td{
+    padding-left:20px ;
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+
+
 /* quantity buttons (+ and -) */
 .quanbutton{
     border: none;
@@ -327,13 +411,13 @@ padding-top: 20px;
 .inspectimgdiv{
     width: 450px;
     height:550px;
-    border: 1px solid black;
+    border: none;
     border-radius: 5px;
     background-color: rgb(246, 188, 188);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     position: fixed;
     top: 140px;
-    right: 250px;
+    right: 400px;
     opacity: 0;
     transform: scale(0.9);
     transition: all 0.1s ease-out;
@@ -347,10 +431,11 @@ padding-top: 20px;
 .inspectimgdivempty{
     position: fixed;
     top:50%;
-    right: 25%;
+    right: 35%;
     font-weight: 630;
     color: grey;
 }
+
 .inspectimg{
     width: 100%;
     height: 100%;
@@ -411,4 +496,177 @@ padding-top: 20px;
 .wishpagetdbold{
     font-weight: 350;
 }
+/* order card styles */
+.ordercard{
+    background-color:aliceblue;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 5px;
+    padding: 35px;
+    position: fixed;
+    right: 40px;
+    bottom: 50px;
+}
+.ordercard p{
+    font-weight: 500;
+}
+.ordercard button{
+    background: linear-gradient(135deg, #ff3f6c, #ff527b);
+    color: white;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 30px;
+    width: 70%;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+.ordercard button:hover{
+    background: linear-gradient(135deg, #f31e50, #f60a41);
+}
 
+/* Order apage styles */
+.orderpagediv{
+   width: 600px;
+   margin:auto;
+   margin-top: 20px;
+}
+.orderhistorybtn{
+    font-weight: 700;
+    position:fixed;
+    left: 20px;
+    top:130px;
+    background-color:#ff3f6c;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    padding: 7px;
+    border-radius: 5px;
+    border: none;
+}
+.orderitemdiv{
+    height: 155px;
+    margin: 5px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+
+}
+.orderitemdiv:hover{
+    height: 155px;
+    background-color:lightgrey;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
+}
+.orderitemdiv img{
+    height:100%;
+    display: inline-block;
+}
+.orderpagesuccessmessage{
+    text-align: center;
+    margin-top: 30px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+.orderlisttable{
+    display: inline;
+    margin-left: 15%;
+    position: relative;
+    bottom: 40px;
+}
+.orderlisttable td{
+    font-weight: 600;
+}
+
+.orderdetails{
+    width: 250px;
+    height: 400px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    right:70px;
+    bottom:50px;
+    background-color:rgb(255, 255, 255);
+    color: black;
+    text-align: center;
+}
+.orderdetails h4{
+    margin-top: 20px;
+    color: black;
+}
+.orderdetailstable{
+    width: 100%;
+    
+}
+.orderdetailstable td{
+    font-weight: 650;
+    color:rgb(68, 68, 68);
+}
+.orderpageemptydiv {
+  display: flex;
+  justify-content: center;   
+  align-items: center;       
+  width: 100%;               
+}
+
+.orderpagenoproductimg {
+  width:400px;      
+  margin-top: 100px;         
+}
+
+.emptymessage{
+    text-align: center;
+}
+ 
+
+/* Order history page div */
+
+/* .historywholediv{
+    display: inline-block;
+} */
+.historyordertitle{
+    text-align: center;
+    color: #ff003c;
+    padding-bottom: 10px;
+}
+.orderhistorylist{
+    width: 500px;
+    margin: 40px;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+.historyordereachproduct{
+    height: 135px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}
+.orderhistoryimage{
+    height: 100%;
+    display: inline-block;
+}
+.orderhistoryproducttable{
+    padding: 10px;
+    display: inline;
+    position: relative;
+    bottom:40px;
+}
+.orderhistoryproducttable td{
+    padding-left: 30px;
+    color: black;
+    font-weight: 400;
+}
+.backtohome{
+    position:fixed;
+    right: 30px;
+    bottom: 30px;
+    background-color: #f31e50;
+    color: white;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: none;
+    border-radius: 5px;
+
+}
