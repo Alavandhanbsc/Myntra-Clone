@@ -88,6 +88,8 @@ display: inline;
 color: grey;
 }
 
+
+
 .search-icon{
     position: relative;
     left: 90px;
@@ -109,9 +111,24 @@ color: grey;
 }
 
 
+
 .navbardiv p:hover{
-    color:rgb(153, 151, 151);
+    color:rgb(135, 135, 135);
     cursor: pointer;
+    border-bottom: #f31e50;
+    
+}
+
+.categorymenunames{
+    color: #000000;
+    padding-bottom: 30px;
+    margin-right: 20px;
+    margin-left: 10px;
+    font-weight: 700;
+}
+.categorymenunames:hover{
+    border-bottom: 5px solid rgb(255, 0, 157);
+    color: #a2a2a2;
 }
 
 .navbarsearch{

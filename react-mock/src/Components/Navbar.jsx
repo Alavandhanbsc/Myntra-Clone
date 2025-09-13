@@ -28,14 +28,14 @@ function Navbar (){
             <nav>  
          <Link to={"/home"}  style={{ textDecoration: 'none'}}> <img style={{width:"80px",paddingLeft:"10px"}} src={logo} alt="Myntra logo" /> </Link>
 
-                 <h6>  
-                    <Link to={"/mens"}  style={{ textDecoration:'none'}}  ><p>Mens</p></Link> 
-                    <Link to={"/Womens"}  style={{ textDecoration:'none'}}  ><p>Womens</p></Link> 
-                    <Link to={"/kids"}  style={{ textDecoration:'none'}}  ><p>Kids</p></Link> 
-                    <Link to={"/homeappliance"}  style={{ textDecoration:'none'}}  ><p>Home</p></Link>  
-                    <Link to={"/beauty"}  style={{ textDecoration:'none'}}  ><p>Beauty</p></Link> 
-                    <Link to={"/genz"}  style={{ textDecoration:'none'}}  ><p>Genz</p></Link> 
-                    <Link to={"/studio"}  style={{ textDecoration:'none'}}  ><p>Studio</p></Link> 
+                 <h6 className='categorynames'>  
+                    <Link to={"/mens"}  style={{ textDecoration:'none'}}  ><span className='categorymenunames'>Mens</span></Link> 
+                    <Link to={"/Womens"}  style={{ textDecoration:'none'}}  ><span className='categorymenunames'>Womens</span></Link> 
+                    <Link to={"/kids"}  style={{ textDecoration:'none'}}  ><span className='categorymenunames'>Kids</span></Link> 
+                    <Link to={"/homeappliance"}  style={{ textDecoration:'none'}}  ><span className='categorymenunames'>Home</span></Link>  
+                    <Link to={"/beauty"}  style={{ textDecoration:'none'}}  ><span className='categorymenunames'>Beauty</span></Link> 
+                    <Link to={"/genz"}  style={{ textDecoration:'none'}}  ><span className='categorymenunames'>Genz</span></Link> 
+                    <Link to={"/studio"}  style={{ textDecoration:'none'}}  ><span className='categorymenunames'>Studio</span></Link> 
                     
                  
                  </h6> 
